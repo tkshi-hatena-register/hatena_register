@@ -43,7 +43,6 @@ proxy_list.each do |row|
 
   p "画像認証を行ってください。"
   gets
-  driver.switch_to.frame(driver.find_elements(:tag_name, 'iframe')[1])
   driver.find_element(:id, 'submit-button').click
   driver.find_element(:id, 'submit-button').click
 
