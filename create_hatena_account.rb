@@ -7,16 +7,16 @@ require 'kconv'
 proxy_list = CSV.read("proxies.csv")
 
 i = 0
-proxy_list.each do |row|
-  PROXY = "#{row[0]}:#{row[1]}"
-  proxy = Selenium::WebDriver::Proxy.new(
-    :http     => PROXY,
-    :ftp      => PROXY,
-    :ssl      => PROXY,
-    :no_proxy=>nil
-  )
+# proxy_list.each do |row|
+#   PROXY = "#{row[0]}:#{row[1]}"
+#   proxy = Selenium::WebDriver::Proxy.new(
+#     :http     => PROXY,
+#     :ftp      => PROXY,
+#     :ssl      => PROXY,
+#     :no_proxy=>nil
+#   )
 
-  driver = Selenium::WebDriver.for :chrome ,:switches => %w[--proxy-server=ProxyServer:Port]
+  driver = Selenium::WebDriver.for :chrome #,:switches => %w[--proxy-server=ProxyServer:Port]
   driver2 = Selenium::WebDriver.for :chrome
 
   driver2.navigate.to("https://10minutemail.com/10MinuteMail/index.html?dswid=9418")
