@@ -37,9 +37,9 @@ proxy_list.each do |row|
   driver.find_element(:id, 'password-input').send_keys(password)
   driver.find_element(:id, 'mail-input').send_keys(email)
   driver.find_element(:xpath, '//*[@id="magazine"]/div[1]/label').click
-  frame = driver.find_elements(:tag_name, 'iframe')
-  driver.switch_to.frame(driver.find_elements(:tag_name, 'iframe')[0])
-  driver.find_element(:class, 'recaptcha-checkbox-checkmark').click
+  # frame = driver.find_elements(:tag_name, 'iframe')
+  # driver.switch_to.frame(driver.find_elements(:tag_name, 'iframe')[0])
+  # driver.find_element(:class, 'recaptcha-checkbox-checkmark').click
 
   p "画像認証を行ってください。"
   gets
