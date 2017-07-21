@@ -13,15 +13,18 @@ proxy_list.each do |row|
     :http     => PROXY,
     :ftp      => PROXY,
     :ssl      => PROXY,
-    :no_proxy=>nil
+    :no_proxy => nil
   )
 
-  driver = Selenium::WebDriver.for :chrome ,:switches => %w[--proxy-server=ProxyServer:Port]
-  driver2 = Selenium::WebDriver.for :chrome
+  caps = Selenium::WebDriver::Remote::Capabilities.chrome(:proxy => proxy)
+
+  driver2 = Selenium::WebDriver.for :chrome ,:desired_capabilities => caps
 
   driver2.navigate.to("https://10minutemail.com/10MinuteMail/index.html?dswid=9418")
+
   email = driver2.find_element(:id, 'mailAddress').attribute("value")
 
+  driver = Selenium::WebDriver.for :chrome ,:desired_capabilities => caps
   driver.navigate.to("https://www.hatena.ne.jp/register?via=200125")
 
   vowel = ["a", "i", "u", "e", "o"]
