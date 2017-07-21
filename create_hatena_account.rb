@@ -59,7 +59,7 @@ proxy_list.each do |row|
   end
 
   CSV.open("result.csv","a") do |file|
-    file << [user_id, password, row]
+    file << [user_id, password, row[0], row[1]]
   end
 
   table = CSV.table("proxies.csv", headers: false)
