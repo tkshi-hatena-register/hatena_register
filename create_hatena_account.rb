@@ -40,16 +40,11 @@ proxy_list.each do |row|
   driver.find_element(:id, 'password-input').send_keys(password)
   driver.find_element(:id, 'mail-input').send_keys(email)
   driver.find_element(:xpath, '//*[@id="magazine"]/div[1]/label').click
-  # frame = driver.find_elements(:tag_name, 'iframe')
-  # driver.switch_to.frame(driver.find_elements(:tag_name, 'iframe')[0])
-  # driver.find_element(:class, 'recaptcha-checkbox-checkmark').click
-
-  p "画像認証を行ってください。"
-  gets
-  driver.find_element(:id, 'submit-button').click
-  driver.find_element(:id, 'submit-button').click
 
   wait = Selenium::WebDriver::Wait.new(:timeout => 10000) # seconds
+  wait.until {driver.find_element(:id, 'back-button').displayed?}
+  driver.find_element(:id, 'submit-button').click
+
   wait.until {driver2.find_element(:class, 'inc-mail-subject').displayed?}
 
   driver2.find_element(:class, 'inc-mail-subject').click
